@@ -86,5 +86,4 @@ npm run dev
      - Uploaded document text
      - Uploaded image
    - Now asking `What did I upload earlier?` will behave like a fresh session.
-
-This app is intended as a simple demo of Gemini API integration, file uploads, and lightweight in-memory chat state—no authentication, no database, no advanced RAG.
+## 🙌 Made with ❤️ by **Anirudha Chaudhary**
