@@ -6,43 +6,7 @@ if (!apiKey) throw new Error("GEMINI_API_KEY is required");
 const genAI = new GoogleGenerativeAI(apiKey);
 const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
-// export async function generateReply({ chat }) {
-//   const parts = [];
 
-//   // Include prior messages as context
-//   if (chat.messages.length) {
-//     const historyText = chat.messages
-//       .map(m => `${m.role === "user" ? "User" : "Bot"}: ${m.text}`)
-//       .join("\n");
-//     parts.push({ text: `Conversation so far:\n${historyText}` });
-//   }
-
-//   // Include doc text
-//   if (chat.docText?.text) {
-//     parts.push({ text: `Document content:\n${chat.docText.text.slice(0, 8000)}` });
-//   }
-
-//   // Include image if present
-//   if (chat.image?.buffer && chat.image?.mimeType) {
-//     parts.push({
-//       inlineData: {
-//         data: chat.image.buffer.toString("base64"),
-//         mimeType: chat.image.mimeType,
-//       },
-//     });
-//   }
-
-//   // The last user message should be the final text part
-//   const lastUser = [...chat.messages].reverse().find(m => m.role === "user");
-//   if (lastUser) {
-//     parts.push({ text: `Latest user message: ${lastUser.text}` });
-//   } else {
-//     parts.push({ text: "User: (no message provided)" });
-//   }
-
-//   const result = await model.generateContent({ contents: [{ role: "user", parts }] });
-//   return result.response.text();
-// }
 
 export async function generateReply({ chat }) {
   const parts = [];
