@@ -1,34 +1,43 @@
-## AI Chatbot (Gemini)
+### AI Chatbot (Gemini)
 
-Hey everyone! I'm excited to present AI-ChatBot a minimal web-based chatbot built with **Node.js + Express** (backend) and **React + Vite + Tailwind CSS** (frontend), using **Google Gemini** for:
+Hey! This is a small AI chatbot project I built to play with **Google Gemini** and keep things as simple as possible.  
+It’s a minimal web app with:
 
-- Text conversation
-- PDF/TXT document Q&A
-- PNG/JPG image Q&A
-- Simple in-memory chat context (no auth, no database)
+- **Backend**: Node.js + Express  
+- **Frontend**: React + Vite + Tailwind CSS  
+- **AI**: Google Gemini
+
+The bot can:
+
+- Chat with plain text  
+- Answer questions about uploaded **PDF/TXT** files  
+- Answer questions about uploaded **PNG/JPG** images  
+- Keep basic chat context **in memory only** (no auth, no database)
 
 ---
 
 ### 1. Installation
 
-Clone the repo and install dependencies for both backend and frontend.
+From the project root, install dependencies for both backend and frontend.
 
-# From project root
+# Backend
 cd backend
 npm install
 
+# Frontend
 cd ../frontend
 npm install---
 
 ### 2. Setting the Gemini API Key
 
-The backend reads your Gemini key from `GEMINI_API_KEY`.
+The backend expects your Gemini key in an environment variable called `GEMINI_API_KEY`.
 
 1. In `backend/`, create a `.env` file:
 
 GEMINI_API_KEY=your_gemini_api_key_here
-PORT=30002. **Do not commit `.env`**. It should be in `.gitignore`.  
-3. On Vercel (for backend deployment), add `GEMINI_API_KEY` in Project → Settings → Environment Variables.
+PORT=30002. Make sure `.env` is **not committed** (it should be listed in `.gitignore`).  
+3. For deployment on Vercel (backend project), set `GEMINI_API_KEY` in:  
+   **Project → Settings → Environment Variables**.
 
 ---
 
@@ -38,52 +47,54 @@ PORT=30002. **Do not commit `.env`**. It should be in `.gitignore`.
 
 cd backend
 npm run dev
-# Backend will run on http://localhost:3000#### Frontend (React + Vite)
 
-1. In `frontend/`, create `.env`:
+1. In `frontend/`, create a `.env` file:
 
-VITE_API_BASE_URL=http://localhost:30002. Run the dev server:
+VITE_API_BASE_URL=http://localhost:30002. Start the dev server:
 
 cd frontend
 npm run dev
-# Open the URL shown by Vite (e.g. http://localhost:5173)The frontend will call the backend using `VITE_API_BASE_URL`.
 
 ---
 
-### 4. Example Usage (How to Use the App)
+### 4. How to Use the App
 
 1. **Open the web app**  
    - Go to the frontend URL (local `http://localhost:5173` or your Vercel frontend URL).
 
 2. **Start a chat**  
-   - The app automatically starts a new chat on load.
-   - Type something like: `Hi chat, what can you do?` and click **Send**.
+   - A new chat is started automatically when the page loads.  
+   - Try something like: `Hi chat, what can you do?` and hit **Send**.
 
 3. **Upload a document (PDF/TXT)**  
-   - Click the **Doc** button.
-   - Choose a `.pdf` or `.txt` file.
-   - After upload, ask:  
-     - `Summarize the document.`  
+   - Click the **Doc** button.  
+   - Select a `.pdf` or `.txt` file.  
+   - Then ask things like:
+     - `Summarize the document.`
      - `What was the third point mentioned?`
 
 4. **Upload an image (PNG/JPG)**  
-   - Click the **Image** button.
-   - Choose a `.png` or `.jpg` file.
-   - You’ll see a small preview in the side panel.
-   - Ask:  
-     - `What's in the image?`  
+   - Click the **Image** button.  
+   - Select a `.png` or `.jpg` file.  
+   - A small preview will appear in the side panel.  
+   - Now you can ask:
+     - `What's in the image?`
      - `Is the person smiling?`
 
 5. **Use context across messages**  
-   - Ask follow-up questions referencing what you uploaded, e.g.:  
-     - `What did I upload earlier?`  
+   - You can refer back to what you uploaded:
+     - `What did I upload earlier?`
      - `Explain the key topics from the document in simple terms.`
 
 6. **Reset with New Chat**  
-   - Click **New Chat**.
-   - This clears:
-     - Message history
-     - Uploaded document text
-     - Uploaded image
-   - Now asking `What did I upload earlier?` will behave like a fresh session.
+   - Click **New Chat**.  
+   - This wipes:
+     - Chat history  
+     - Uploaded document text  
+     - Uploaded image  
+   - After that, asking `What did I upload earlier?` will behave like a completely fresh session.
+
+---
+
+
 ## 🙌 Made with ❤️ by **Anirudha Chaudhary**
